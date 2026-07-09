@@ -1,0 +1,457 @@
+/* ==========================================================================
+   Crypto / Cinematic Digital Landscape Portfolio Styles
+   ========================================================================== */
+
+:root {
+    --bg-color: #030305;
+    --text-primary: #ffffff;
+    --text-secondary: #8892b0;
+    --accent-color: #7928ca;
+    --accent-glow: #ff0080;
+    --glass-bg: rgba(20, 20, 30, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    /* Hide scrollbar for a cleaner look, though we keep scrolling */
+    scrollbar-width: none; 
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Typography */
+h1, h2, h3, .huge-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.huge-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, var(--accent-glow), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    letter-spacing: 0.2em;
+}
+
+/* Canvas Background */
+#webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none; /* Let clicks pass through to HTML layer */
+}
+
+/* Loading Screen */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-out;
+}
+
+.loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-content {
+    text-align: center;
+    width: 300px;
+}
+
+.glow-text {
+    color: #fff;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255,0,128,0.5);
+    animation: pulse 2s infinite;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-glow));
+    transition: width 0.1s;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+.scroll-indicator.hidden {
+    opacity: 0;
+}
+.scroll-indicator span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 10px;
+}
+.mouse {
+    width: 24px;
+    height: 36px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 12px;
+    margin: 0 auto;
+    position: relative;
+}
+.wheel {
+    width: 2px;
+    height: 6px;
+    background: var(--text-secondary);
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: scrollWheel 2s infinite;
+}
+@keyframes scrollWheel {
+    0% { top: 6px; opacity: 1; }
+    100% { top: 18px; opacity: 0; }
+}
+
+/* Scroll Overlay Content */
+#scroll-container {
+    position: relative;
+    z-index: 10;
+}
+
+.scroll-section {
+    height: 150vh; /* Make sections tall to allow scroll-based camera movement */
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 10vw;
+}
+
+/* Specific Section Alignments */
+#hero { height: 100vh; align-items: center; }
+#about { align-items: center; justify-content: flex-end; }
+#skills { align-items: center; justify-content: flex-start; }
+#projects { height: 200vh; align-items: center; justify-content: center; }
+#contact { height: 100vh; align-items: center; justify-content: center; }
+
+.content-block {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 600px;
+}
+.center-aligned {
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Fade Elements for GSAP */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Typography specifics */
+.subtitle {
+    color: var(--accent-glow);
+    letter-spacing: 0.3em;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.role {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    margin-bottom: 3rem;
+}
+.large-text {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+}
+.hero-stats .stat {
+    display: flex;
+    flex-direction: column;
+}
+.hero-stats .stat span:first-child {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.2em;
+}
+.hero-stats .stat span:last-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Skills Hologram UI */
+.skills-hologram {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.skill-node {
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-left: 3px solid var(--accent-glow);
+    border-top: 1px solid var(--glass-border);
+    border-right: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 0.3s, background 0.3s;
+}
+.skill-node:hover {
+    transform: translateX(20px);
+    background: rgba(121, 40, 202, 0.2);
+}
+.skill-node i {
+    color: var(--accent-glow);
+    margin-right: 15px;
+    font-size: 1.5rem;
+}
+
+/* Projects Carousel */
+.projects-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(255, 0, 128, 0.2);
+    border-color: rgba(255, 0, 128, 0.5);
+}
+.card-img {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    background-color: #111;
+}
+.glass-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.glass-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+.cyber-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--accent-glow);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    position: relative;
+}
+.cyber-btn:hover {
+    background: var(--accent-glow);
+    color: #000;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Form Styles */
+.cyber-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 8px;
+}
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+.input-group input, .input-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 10px 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    outline: none;
+}
+.input-group input:focus, .input-group textarea:focus {
+    border-bottom-color: var(--accent-glow);
+}
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    transition: 0.3s ease all;
+    pointer-events: none;
+}
+.input-group input:focus ~ label,
+.input-group input:valid ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:valid ~ label {
+    top: -15px;
+    font-size: 0.7rem;
+    color: var(--accent-glow);
+}
+
+.cyber-submit-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: #fff;
+    padding: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.cyber-submit-btn:hover {
+    background: rgba(121, 40, 202, 0.2);
+    border-color: var(--accent-glow);
+}
+.btn-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: var(--accent-glow);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: -1;
+}
+.cyber-submit-btn:hover .btn-glow {
+    width: 150px;
+    height: 150px;
+    opacity: 0.5;
+}
+.form-msg {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.footer-links {
+    margin-top: 3rem;
+    text-align: center;
+}
+.footer-links a {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.footer-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+.footer-links p {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Utility */
+.text-center { text-align: center; }
+.mb-2 { margin-bottom: 2rem; }
+
+@media (max-width: 768px) {
+    .huge-title { font-size: 3rem; }
+    .hero-stats { flex-direction: column; gap: 1rem; }
+    .scroll-section { padding: 0 5vw; }
+}

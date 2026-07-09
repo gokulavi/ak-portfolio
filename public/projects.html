@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Anandha Kumar</title>
+    <meta name="description" content="Projects by Anandha Kumar, Web Developer & Designer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/ak_logo.png" alt="Anandha Kumar Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Header -->
+    <section class="projects-header section-padding">
+        <div class="container text-center">
+            <h1 class="reveal">All Projects</h1>
+            <div class="underline center"></div>
+            <p class="reveal">A collection of my recent work across web design and development.</p>
+            <div class="reveal mt-4">
+                <button class="btn btn-primary" id="add-project-btn" onclick="alert('Add project functionality will be implemented with a database!')">
+                    <i class="fas fa-plus"></i> Add New Project
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Projects Grid -->
+    <section class="all-projects section-padding pt-0">
+        <div class="container">
+            <div class="projects-grid reveal">
+                <!-- Project 1 -->
+                <div class="project-card detailed-card">
+                    <div class="project-img">
+                        <img src="images/project1.png" alt="Project 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>Dashboard Analytics</h3>
+                        <p>A comprehensive dashboard for visualizing complex data sets with real-time updates. Built with React and Recharts.</p>
+                        <div class="tech-stack">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>CSS Modules</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/project1" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://yourproject-demo.com" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card detailed-card">
+                    <div class="project-img">
+                        <img src="images/project2.png" alt="Project 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Taskify Mobile App</h3>
+                        <p>A sleek productivity application designed to keep teams organized and on track. Progressive Web App (PWA).</p>
+                        <div class="tech-stack">
+                            <span>Vue.js</span>
+                            <span>Firebase</span>
+                            <span>Tailwind CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/project2" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://yourproject-demo.com" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card detailed-card">
+                    <div class="project-img">
+                        <img src="images/project3.png" alt="Project 3">
+                    </div>
+                    <div class="project-info">
+                        <h3>NexGen Landing Page</h3>
+                        <p>A high-converting, 3D animated landing page for a modern SaaS product with Three.js integration.</p>
+                        <div class="tech-stack">
+                            <span>HTML5</span>
+                            <span>Three.js</span>
+                            <span>GSAP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/project3" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://yourproject-demo.com" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-profile">
+                <img src="images/footer_pic.png" alt="Anandha Kumar">
+                <span>Anandha Kumar - Web Developer</span>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 Anandha Kumar. All rights reserved.</p>
+            <a href="#" class="back-to-top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
